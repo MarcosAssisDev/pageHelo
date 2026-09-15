@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mapa de Fotos - Landing Page Heloisa</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f5f8f7;
+            padding: 2rem;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            color: #2d7a7a;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        
+        .subtitle {
+            text-align: center;
+            color: #6b7a7a;
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+        
+        .section {
+            background: white;
+            border-radius: 1rem;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 12px rgba(45, 122, 122, 0.15);
+        }
+        
+        .section h2 {
+            color: #2d7a7a;
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+            border-bottom: 3px solid #e8b9a4;
+            padding-bottom: 0.5rem;
+        }
+        
+        .section-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            align-items: center;
+        }
+        
+        .photo-area {
+            background: linear-gradient(135deg, #a8d5d5 0%, #e8b9a4 100%);
+            border: 3px dashed #2d7a7a;
+            border-radius: 0.5rem;
+            padding: 2rem;
+            text-align: center;
+            min-height: 300px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-weight: bold;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .photo-area::before {
+            content: '📷';
+            font-size: 4rem;
+            opacity: 0.3;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        
+        .photo-area-text {
+            position: relative;
+            z-index: 1;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .photo-details {
+            background: #f5f8f7;
+            padding: 1.5rem;
+            border-left: 4px solid #e8b9a4;
+            border-radius: 0.5rem;
+        }
+        
+        .photo-details h3 {
+            color: #2d7a7a;
+            margin-bottom: 1rem;
+        }
+        
+        .detail-item {
+            margin-bottom: 0.8rem;
+        }
+        
+        .detail-label {
+            font-weight: bold;
+            color: #2d7a7a;
+        }
+        
+        .priority {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            border-radius: 0.3rem;
+            font-weight: bold;
+            color: white;
+            margin-top: 0.5rem;
+        }
+        
+        .priority-1 {
+            background: #4caf50;
+        }
+        
+        .priority-2 {
+            background: #ff9800;
+        }
+        
+        .priority-3 {
+            background: #2196f3;
+        }
+        
+        .tips {
+            background: #fff3e0;
+            border-left: 4px solid #ff9800;
+            padding: 1rem;
+            margin-top: 1rem;
+            border-radius: 0.3rem;
+        }
+        
+        .tips h4 {
+            color: #e65100;
+            margin-bottom: 0.5rem;
+        }
+        
+        .tips ul {
+            margin-left: 1.5rem;
+            color: #6b7a7a;
+        }
+        
+        .tips li {
+            margin-bottom: 0.3rem;
+        }
+        
+        .ok {
+            color: #4caf50;
+            font-weight: bold;
+        }
+        
+        .avoid {
+            color: #f44336;
+            font-weight: bold;
+        }
+        
+        .legend {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .legend-item {
+            padding: 1rem;
+            border-radius: 0.5rem;
+            text-align: center;
+            font-weight: bold;
+        }
+        
+        .legend-1 {
+            background: #4caf50;
+            color: white;
+        }
+        
+        .legend-2 {
+            background: #ff9800;
+            color: white;
+        }
+        
+        .legend-3 {
+            background: #2196f3;
+            color: white;
+        }
+        
+        .checklist {
+            background: #e8f5e9;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            margin-top: 2rem;
+        }
+        
+        .checklist h3 {
+            color: #2d7a7a;
+            margin-bottom: 1rem;
+        }
+        
+        .checklist-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.8rem;
+        }
+        
+        .checklist-item input {
+            margin-right: 0.8rem;
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+        
+        .checklist-item label {
+            cursor: pointer;
+        }
+        
+        @media (max-width: 768px) {
+            .section-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .legend {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📍 Mapa Visual de Fotos - Landing Page</h1>
+        <p class="subtitle">Guia completo: Onde cada foto vai ficar e como tirar</p>
+        
+        <div class="legend">
+            <div class="legend-item legend-1">🥇 PRIORIDADE 1</div>
+            <div class="legend-item legend-2">🥈 PRIORIDADE 2</div>
+            <div class="legend-item legend-3">🥉 PRIORIDADE 3</div>
+        </div>
+        
+        <!-- HERO SECTION -->
+        <div class="section">
+            <h2>1️⃣ HERO SECTION - Foto de Perfil</h2>
+            <div class="section-content">
+                <div class="photo-area">
+                    <div class="photo-area-text">
+                        <div>350x350px</div>
+                        <div>Foto sua (com arara)</div>
+                    </div>
+                </div>
+                <div class="photo-details">
+                    <h3>Foto de Perfil</h3>
+                    <div class="detail-item">
+                        <span class="detail-label">Onde fica:</span> Lado direito da Hero section
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Tamanho:</span> 350x350px (quadrado)
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Formato:</span> JPEG ou WebP
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Nome do arquivo:</span> <code>img/heloisa-hero.jpg</code>
+                    </div>
+                    <span class="priority priority-1">✅ PRIORIDADE 1 - JÁ TEM!</span>
+                    
+                    <div class="tips">
+                        <h4>✅ Sua foto PERFEITA porque:</h4>
+                        <ul>
+                            <li><span class="ok">✓</span> Sorriso natural e confiante</li>
+                            <li><span class="ok">✓</span> Boa iluminação (luz natural)</li>
+                            <li><span class="ok">✓</span> Mostra conhecimento com animais (arara)</li>
+                            <li><span class="ok">✓</span> Cores combinam com paleta (verde escuro)</li>
+                            <li><span class="ok">✓</span> Transmite segurança e carisma</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- CONSULTÓRIO -->
+        <div class="section">
+            <h2>2️⃣ LOCALIZAÇÃO - Foto do Consultório</h2>
+            <div class="section-content">
+                <div class="photo-area">
+                    <div class="photo-area-text">
+                        <div>400x300px</div>
+                        <div>Consultório/Clínica</div>
+                    </div>
+                </div>
+                <div class="photo-details">
+                    <h3>Foto do Consultório</h3>
+                    <div class="detail-item">
+                        <span class="detail-label">Onde fica:</span> Seção "Localização & Horários" (lado direito do mapa)
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Tamanho:</span> 400x300px (landscape)
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Formato:</span> JPEG ou WebP
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Nome do arquivo:</span> <code>img/consultorio.jpg</code>
+                    </div>
+                    <span class="priority priority-2">⭐ PRIORIDADE 2</span>
+                    
+                    <div class="tips">
+                        <h4>📸 O que tirar:</h4>
+                        <ul>
+                            <li>Entrada/fachada da clínica Thiago Pagani</li>
+                            <li>Recepção aconchegante</li>
+                            <li>Sala de atendimento (limpa e organizada)</li>
+                        </ul>
+                        <h4 style="margin-top: 1rem;">✅ Dicas de Foto:</h4>
+                        <ul>
+                            <li><span class="ok">✓</span> Boa iluminação (luz natural)</li>
+                            <li><span class="ok">✓</span> Ambiente limpo e organizado</li>
+                            <li><span class="ok">✓</span> Cores quentes (combina com paleta)</li>
+                            <li><span class="avoid">✗</span> Evitar: fotos escuras ou bagunçadas</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- ATENDIMENTO -->
+        <div class="section">
+            <h2>3️⃣ SOBRE SEÇÃO - Foto Atendendo Animal</h2>
+            <div class="section-content">
+                <div class="photo-area">
+                    <div class="photo-area-text">
+                        <div>400x500px</div>
+                        <div>Você atendendo</div>
+                    </div>
+                </div>
+                <div class="photo-details">
+                    <h3>Foto de Atendimento</h3>
+                    <div class="detail-item">
+                        <span class="detail-label">Onde fica:</span> Seção "Sobre" ou carrossel futuro
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Tamanho:</span> 400x500px (portrait/vertical)
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Formato:</span> JPEG ou WebP
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Nome do arquivo:</span> <code>img/heloisa-atendimento.jpg</code>
+                    </div>
+                    <span class="priority priority-3">💎 PRIORIDADE 3</span>
+                    
+                    <div class="tips">
+                        <h4>📸 O que tirar:</h4>
+                        <ul>
+                            <li>Você examinando cão/gato</li>
+                            <li>Acariciando um animal</li>
+                            <li>Durante consulta (privacy ok)</li>
+                        </ul>
+                        <h4 style="margin-top: 1rem;">✅ Dicas:</h4>
+                        <ul>
+                            <li><span class="ok">✓</span> Mostra sua dedicação profissional</li>
+                            <li><span class="ok">✓</span> Animal confortável e calmo</li>
+                            <li><span class="ok">✓</span> Ambiente de clínica ao fundo</li>
+                            <li><span class="avoid">✗</span> Evitar: procedimentos invasivos</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- CHECKLIST -->
+        <div class="section">
+            <div class="checklist">
+                <h3>📋 Checklist - Fotos a Preparar</h3>
+                
+                <div class="checklist-item">
+                    <input type="checkbox" id="foto1" checked>
+                    <label for="foto1"><strong>✅ Foto com Arara (Hero)</strong> - Pronto! Usar como está</label>
+                </div>
+                
+                <div class="checklist-item">
+                    <input type="checkbox" id="foto2">
+                    <label for="foto2"><strong>Foto do Consultório</strong> - Tirar: fachada, recepção ou sala</label>
+                </div>
+                
+                <div class="checklist-item">
+                    <input type="checkbox" id="foto3">
+                    <label for="foto3"><strong>Foto Atendendo Animal</strong> - Tirar: você com cão/gato</label>
+                </div>
+                
+                <div class="checklist-item">
+                    <input type="checkbox" id="foto4">
+                    <label for="foto4"><strong>Depoimentos (Futuro)</strong> - Colher fotos de clientes + pets</label>
+                </div>
+                
+                <div class="checklist-item">
+                    <input type="checkbox" id="foto5">
+                    <label for="foto5"><strong>Certificados (Futuro)</strong> - Diploma ou certificações</label>
+                </div>
+            </div>
+        </div>
+        
+        <!-- RESUMO -->
+        <div class="section">
+            <h2>📊 Resumo - Próximas Etapas</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem;">
+                <div style="background: #e8f5e9; padding: 1.5rem; border-radius: 0.5rem; border-left: 4px solid #4caf50;">
+                    <h3 style="color: #2d7a7a; margin-bottom: 0.5rem;">✅ AGORA</h3>
+                    <p>Estrutura pronta e enviada</p>
+                    <p style="font-size: 0.9rem; color: #6b7a7a; margin-top: 0.5rem;">HTML, CSS, JS 100% funcional</p>
+                </div>
+                
+                <div style="background: #fff3e0; padding: 1.5rem; border-radius: 0.5rem; border-left: 4px solid #ff9800;">
+                    <h3 style="color: #2d7a7a; margin-bottom: 0.5rem;">📸 PRÓXIMO PASSO</h3>
+                    <p>Envie fotos de qualidade</p>
+                    <p style="font-size: 0.9rem; color: #6b7a7a; margin-top: 0.5rem;">Siga o guia acima para tirar boas fotos</p>
+                </div>
+                
+                <div style="background: #e3f2fd; padding: 1.5rem; border-radius: 0.5rem; border-left: 4px solid #2196f3;">
+                    <h3 style="color: #2d7a7a; margin-bottom: 0.5rem;">🚀 DEPOIS</h3>
+                    <p>Vou integrar e otimizar</p>
+                    <p style="font-size: 0.9rem; color: #6b7a7a; margin-top: 0.5rem;">Deploy + SEO + teste mobile</p>
+                </div>
+            </div>
+        </div>
+        
+        <div style="text-align: center; margin-top: 3rem; color: #6b7a7a;">
+            <p>🐾 <strong>Desenvolvido com ❤️ para o melhor atendimento veterinário de Bauru</strong></p>
+        </div>
+    </div>
+</body>
+</html>
